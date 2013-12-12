@@ -1,68 +1,55 @@
+var hueBDW = require('./hueDisco');
 
-var hue = require("node-hue-api"),
-    HueApi = hue.HueApi,
-    lightState = hue.lightState,
-    serial = require('serialport').SerialPort,
-    portName = 'COM3';
-
-var sp = new SerialPort(); // instantiate the serial port.
-sp.open(portName, { // portName is instatiated to be COM3, replace as necessary
-   baudRate: 9600, // this is synced to what was set for the Arduino Code
-   dataBits: 8, // this is the default for Arduino serial communication
-   parity: 'none', // this is the default for Arduino serial communication
-   stopBits: 1, // this is the default for Arduino serial communication
-   flowControl: false // this is the default for Arduino serial communication
+var SerialPort = require("serialport").SerialPort;
+console.log(SerialPort);
+var serialport = new SerialPort("/dev/tty.usbserial-A601LLX0", {
+    baudrate: 9600
 });
 
-sp.on('data', function (data) { // call back when data is received
-    
+serialport.on("open", function () {
+  console.log('open');
+  serialport.on('data', function(data) {
+    console.log('data received: ' + data);
+
+    if(data === 1) {
+        startDisco();
+    } else if(data === 0) {
+        endDisco();
+    }
+  });
+  serialport.write("ls\n", function(err, results) {
+    console.log('err ' + err);
+    console.log('results ' + results);
+  });
 });
 
-var displayResult = function(result) {
-    console.log(result);
-}
 
-var displayError = function(err) {
-    console.error(err);
-}
-var host = "10.1.10.83",
-    username = "3cd1e133346af48f3135fc2b18d01407",
-    api;
 
-state = lightState.create().on().hsl(60,0,100);
 
-    api = new HueApi(host, username);
-    api.setLightState(1, state)
-    .then(displayResult)
-    .fail(displayError)
-    .done();
+// var serialport = require("serialport");
+// var SerialPort = serialport.SerialPort; // localize object constructor
 
-    api.setLightState(2, state)
-    .then(displayResult)
-    .fail(displayError)
-    .done();
+// var sp = new SerialPort("/dev/tty.usbserial-A601LLX0", {
+//   parser: serialport.parsers.readline("\n")
+// });
 
-    api.setLightState(3, state)
-    .then(displayResult)
-    .fail(displayError)
-    .done();
+// SerialPort.on("data", function (data) {
+//   sys.puts("here: "+data);
+// });
 
-    api.setLightState(4, state)
-    .then(displayResult)
-    .fail(displayError)
-    .done();
 
-    api.setLightState(5, state)
-    .then(displayResult)
-    .fail(displayError)
-    .done();
-
-    api.setLightState(6, state)
-    .then(displayResult)
-    .fail(displayError)
-    .done();
-
-    api.setLightState(7, state)
-    .then(displayResult)
-    .fail(displayError)
-    .done();
+var serial = require( "serialport" );
+var SerialPort = serial.SerialPort;
+ 
+// Replace with the device name in your machine.
+var portName = "/dev/tty.usbserial-A601LLX0";
+ 
+var sp = new SerialPort( portName, {
+    baudrate:9600,
+    parser  :serial.parsers.readline( "\n" )
+} );
+ 
+sp.on( "data", function ( data ) {
+    console.log( data );
+    socket.emit( "message", data.toString() );
+} );

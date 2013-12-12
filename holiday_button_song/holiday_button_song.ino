@@ -43,7 +43,7 @@ void loop()
   
   if (buttonState == LOW)
   {
-    Serial.print("1");
+    Serial.print(true);
     
     for (i = 0; i < sizeofarray; i++) // step through the song arrays
     {
@@ -63,7 +63,7 @@ void loop()
       }
       delay(tempo/10);              // brief pause between notes 
     }
-   Serial.print("0"); 
+   Serial.print(false); 
   }
 }
 
