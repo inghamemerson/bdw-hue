@@ -2,7 +2,7 @@
 
 Hit the Jolly Fuckin' Button then watch and listen as BDW turns into a visual and aural holiday onslaught.
 
-Contributors:  
+## Contributors:  
 Jamie Emerson (Node Dev)  
 Adam Noffsinger (Arduino Dev)  
 Nick Stevens (Node Dev)  
