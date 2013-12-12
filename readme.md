@@ -14,6 +14,7 @@ Trevor Glassman
 
 ### Dependencies
 Node Hue API (https://github.com/peter-murray/node-hue-api)
+
 Node Serialport (https://github.com/voodootikigod/node-serialport)
 
 	npm install serialport node-hue-api
