@@ -44,15 +44,17 @@ var setLightColors = function(){
   group3Color = altColor(group3Color);
 };
 
-var startDisco = function(){
+exports.startDisco = function(){
   setLightColors();
   discoInterval = setInterval(setLightColors, 3000);
 };
 
-var endDisco = function() {
+exports.endDisco =  function() {
   api.setGroupLightState(1, white)
   .done();
 
   api.setGroupLightState(3, white)
   .done();
+
+  clearInterval(discoInterval);
 };

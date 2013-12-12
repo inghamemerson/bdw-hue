@@ -1,8 +1,9 @@
-var hueBDW = require('./hueDisco');
+var hueBDW = require('./hueDisco.js');
+console.log(hueBDW);
 
 var SerialPort = require("serialport").SerialPort;
 console.log(SerialPort);
-var serialport = new SerialPort("/dev/tty.usbserial-A601LLX0", {
+var serialport = new SerialPort("/dev/cu.usbserial-A601LLX0", {
     baudrate: 9600
 });
 
@@ -11,10 +12,12 @@ serialport.on("open", function () {
   serialport.on('data', function(data) {
     console.log('data received: ' + data);
 
-    if(data === 1) {
-        startDisco();
-    } else if(data === 0) {
-        endDisco();
+    if(data == 1) {
+        console.log('startDisco()');
+        hueBDW.startDisco();
+    } else if(data == 0) {
+        console.log('endDisco()');
+        hueBDW.endDisco();
     }
   });
   serialport.write("ls\n", function(err, results) {
