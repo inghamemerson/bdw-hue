@@ -1,7 +1,6 @@
-# Jolly Fuckin' Button
-## Hue/Arduino/Node Integration
+# Jolly Fuckin' Button: Hue/Arduino/Node Integration
 
-Hit the Jolly Fuckin' Button then watch and listen as BDW turns into a visual and aural winter wonderland.
+Hit the Jolly Fuckin' Button then watch and listen as BDW turns into a visual and aural holiday onslaught.
 
 Contributors:
 Jamie Emerson (Node Dev)
@@ -12,7 +11,7 @@ Kayleen Burke
 Kevin Hertel
 Trevor Glassman
 
-### Dependencies
+## Dependencies
 Node Hue API (https://github.com/peter-murray/node-hue-api)
 
 Node Serialport (https://github.com/voodootikigod/node-serialport)
