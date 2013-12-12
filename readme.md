@@ -1,4 +1,6 @@
-# Jolly Fuckin' Button: Hue/Arduino/Node Integration
+# Jolly Fuckin' Button
+
+#### Hue/Arduino/Node Integration
 
 Hit the Jolly Fuckin' Button then watch and listen as BDW turns into a visual and aural holiday onslaught.
 
